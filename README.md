@@ -80,3 +80,7 @@ See [docs](./docs) for more information.
 
 If you see something that you think could be improved, make an issue/submit a PR.  I'd love to hear your feedback!
 
+## Bugs
+
+There is a known bug where if there's more than 20 top-level replies on a post, it only shows the top 20. This isn't really an issue for me or my friends, but if you want to fix it feel free. 
+
