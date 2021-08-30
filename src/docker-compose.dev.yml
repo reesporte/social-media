@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  social_media:
+    build: social_media
+    volumes:
+      - uploaded-media:/application/media
+    depends_on:
+      - db
+  db:
+    build: db
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    expose:
+      - 5432
+
+  proxy:
+    build: dev-proxy
+    ports:
+      - 80:80
+      - 443:443
+    depends_on: 
+      - social_media
+  
+volumes:
+  db-data:
+  uploaded-media:

@@ -1,0 +1,127 @@
+<html>
+
+<head>
+	<title>social media</title>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/static/img/gif/palm_tree.gif" type="image/gif" />
+	<link rel="apple-touch-icon-precomposed" href="/static/img/apple-touch-icon.png">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="/static/css/spinner.css">
+	<script src="/static/js/script.js"></script>
+	<script src="/static/js/posts.js"></script>
+</head>
+
+<body>
+	<noscript>please turn on javascript to use this site</noscript>
+	<div id="navbar">
+		<h1>
+			social media
+		</h1>
+		<span id="buttons">
+			<button class="button-link nav-button" title="create a new post" onclick='toggleCollapsed("post-modal")'>new
+				post</button>
+			<button class="button-link nav-button"
+				onclick="window.location.replace('/profile/' + localStorage.getItem('username'))">profile</button>
+			<button class="button-link nav-button" onclick="toggleCollapsed('help-modal')">help</button>
+			<button class="button-link nav-button" title="log out" onclick="logout()">log out</button>
+		</span>
+	</div>
+
+	<hr style="border: 1px double inherit;">
+	<div id="help-modal" class="modal">
+		<div class="modal-content">
+			<h1>help!</h1>
+			<hr>
+			<span>
+				<h3>to make a post:</h3>
+				<li>click on "new post", or press the escape key</li>
+				<li>type your message then press "send"</li>
+			</span>
+			<hr>
+			<span>
+				<h3>to reply to a post:</h3>
+				<li>click on "reply" on the post you want to reply to</li>
+				<li>type your message then press "send"</li>
+			</span>
+			<hr>
+			<span>
+				<h3>to delete a post:</h3>
+				<li>click "delete" on the post you want to delete</li>
+			</span>
+			<hr>
+			<span>
+				<h3>to do something else that you can't figure out / doesn't exist:</h3>
+				<li>
+					ask the admin, and if they don't know, tell them to ask <a href="https://reesporte.github.io">reese</a>
+				</li>
+			</span>
+
+			<button class="button-link" onclick="toggleCollapsed('help-modal')">OK</button>
+		</div>
+	</div>
+
+	<div id="post-modal" class="modal">
+		<div class="modal-content">
+			<form id="post-form">
+				<label for="message">what do you want to say?</label>
+				<textarea name="message" id="message" value="" maxlength="400"></textarea>
+
+				<input type="text" name="replyingTo" id="replyingTo" value="" hidden>
+			</form>
+			<form id="media-form" enctype="multipart/form-data" action="/media/" method="POST">
+				<img src="" id="previewimg" width="100%" style="display: block; margin-bottom: 1em;">
+				<label class="file-upload button-link">
+					<input type="file" id="media" name="media">
+					upload media
+				</label>
+				<input type="text" name="postId" id="postId" value="" hidden>
+				<script>
+					document.getElementById("media").onchange = () => {
+						const [file] = document.getElementById("media").files
+						if (file) {
+							document.getElementById("previewimg").src = URL.createObjectURL(file)
+							document.getElementById("previewimg").alt = "file preview unavailable"
+						}
+					}
+				</script>
+			</form>
+			<button class="button-link" onclick="submitPost()">send</button>
+			<button class="button-link" onclick='toggleCollapsed("post-modal")'>cancel</button>
+		</div>
+	</div>
+
+	<div id="posts-section">
+		<div hidden id="posts-offset">0</div>
+		<div id="posts"></div>
+		<div id="load-more-posts">
+			<button class="button-link" onclick="loadMorePosts()">show earlier posts...</button>
+		</div>
+
+		<div id="spinner-container" class="spinner-container">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+
+		<script>
+			loadPosts();
+		</script>
+	</div>
+
+	<script>
+		document.querySelector("body").addEventListener("keydown", function (e) {
+			if (e.code === "Escape") {
+				toggleCollapsed("post-modal");
+			}
+		})
+	</script>
+
+</body>
+
+
+</html>

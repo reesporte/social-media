@@ -1,0 +1,12 @@
+.login-button {
+    margin-top: 1em;
+    display: block;
+}
+
+.shakira-hot-pics {
+    vertical-align: middle;
+}
+
+.shakira-hot-pics:hover {
+    cursor: pointer;
+}

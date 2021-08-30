@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>social media: profile</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/img/gif/palm_tree.gif" type="image/gif" />
+    <link rel="apple-touch-icon-precomposed" href="/static/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/profile.js"></script>
+</head>
+
+<body>
+    <noscript>please turn on javascript to use this site</noscript>
+    <div class="profile-container">
+        <div class="flex-child">
+            <embed class="profile-img" src="{{.Media}}" alt="profile photo" id="profile">
+            <h1 style="display: inline;" id="username">{{.Username}}</h1>
+            <span style="display: block;" class="datetime">joined: <em id="join-date"></em></span>
+            <script>
+                document.getElementById("join-date").innerText = new Date({{.JoinDate }}).toLocaleDateString();
+            </script>
+            <p id="bio">{{.Bio}}</p>
+
+            <button onclick="window.location.replace('/')" class="button-link">home</button>
+
+            {{if .Owner}}
+            <span id="settings">
+                <button class="button-link profile" onclick="toggleCollapsed('password-modal')">change password</button>
+                <button class="button-link profile" onclick="toggleCollapsed('bio-modal')">change bio</button>
+                <button class="button-link profile" onclick="toggleCollapsed('profile-pic-modal')">change profile picture</button>
+
+                {{if .Admin}}
+                <a href="/admin/" class="button-link profile">admin</a>
+                {{end}}
+
+            </span>
+            {{end}}
+        </div>
+
+        {{if .Owner}}
+        <div id="password-modal" class="flex-child" style="display: none; margin-top: 1em;">
+            <div>
+                <h2>change password:</h2>
+                <form id="change-password-form">
+                    <label for="current-password">current password:</label>
+                    <input type="password" name="current-password" id="current-password">
+
+                    <label for="new-password">new password:</label>
+                    <input type="password" name="new-password" id="new-password">
+                </form>
+                <button class="button-link" onclick="changePassword()">update</button>
+                <button class="button-link" onclick="toggleCollapsed('password-modal')">cancel</button>
+            </div>
+        </div>
+
+        <div id="bio-modal" class="flex-child" style="display: none; margin-top: 1em;">
+            <div>
+                <h2>change bio:</h2>
+                <form id="change-bio-form">
+                    <label for="new-bio"></label>
+                    <textarea type="bio" name="new-bio" id="new-bio"></textarea>
+                </form>
+                <button class="button-link" onclick="changeBio()">update</button>
+                <button class="button-link" onclick="toggleCollapsed('bio-modal')">cancel</button>
+            </div>
+        </div>
+
+        <div id="profile-pic-modal" class="flex-child" style="display: none; margin-top: 1em;">
+            <div>
+                <h2>change profile picture:</h2>
+                <form id="change-pic-form">
+                    <embed src="" id="previewimg" width="100%" style="margin-bottom: 1em;">
+                    <label class="file-upload button-link">
+                        <input type="file" id="media" name="media">
+                        upload media
+                    </label>
+                    <script>
+                        document.getElementById("media").onchange = () => {
+                            const [file] = document.getElementById("media").files
+                            if (file) {
+                                document.getElementById("previewimg").src = URL.createObjectURL(file)
+                            }
+                        }
+                    </script>
+                </form>
+                
+                <button class="button-link" onclick="changeProfilePicture()">update</button>
+                <button class="button-link" onclick="toggleCollapsed('profile-pic-modal')">cancel</button>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</body>
+
+</html>

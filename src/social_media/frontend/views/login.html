@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>social media : log in </title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/img/gif/palm_tree.gif" type="image/gif" />
+    <link rel="apple-touch-icon-precomposed" href="/static/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <script src="/static/js/login.js"></script>
+</head>
+
+<body>
+    <noscript>please turn on javascript to use this site</noscript>
+    <div id="title">
+        <h1>Log in Time: It is Time to Log in</h1>
+        <!-- <img class="shakira-hot-pics" src="/random-gif/" onclick="roulette()" title="russian roulette???"> -->
+    </div>
+
+    <form>
+        <label for="username">username</label>
+        <input type="text" name="username" id="username">
+
+        <label for="password">password</label>
+        <input type="password" name="password" id="password">
+    </form>
+
+    <button class="button-link login-button" onclick="login()">log in</button>
+
+    <script>
+        document.getElementById("password").addEventListener("keydown", function (e) {
+            if (e.code === "Enter") {
+                login();
+            }
+        })
+    </script>
+</body>
+
+</html>

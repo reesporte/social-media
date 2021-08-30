@@ -1,0 +1,213 @@
+@font-face {
+    font-family: 'heading';
+    src: url('/static/fonts/heading.otf');
+}
+
+@font-face {
+    font-family: 'h1';
+    src: url('/static/fonts/h1.otf');
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14pt;
+    color: rgba(255, 255, 255, 0.863);
+    background-color: rgb(18, 18, 18);
+}
+
+h1 {
+    font-family: 'h1';
+    display: inline;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+h2, h3 {
+    font-family: 'heading';
+}
+
+.post {
+    background-color: rgb(25, 25, 25);
+    padding: .5em;
+    border-radius: .1em;
+    margin-bottom: .5em;
+}
+
+.post .message {
+    padding: .1em;
+    display: block;
+}
+
+.post .media {
+	border: none;
+	display: block;
+	width: 400;
+	height: auto;
+}
+
+.author {
+    display: inline;
+    font-weight: bold;
+    margin-right: .5em;
+}
+
+.datetime {
+    display: inline;
+}
+
+.datetime em {
+    padding-right: .5em;
+    font-size: 12pt;
+    font-variant: small-caps;
+}
+
+.reply {
+    background-color: rgb(30, 30, 30);
+    padding: .5em;
+    box-shadow: 0 0 1em .0002em rgb(18, 18, 18, 0.5);
+}
+
+.profilelink {
+    color: rgba(255, 255, 255, 0.863);
+    text-decoration: none;
+}
+
+.profilelink:hover {
+    text-decoration: underline;
+}
+
+.button-link {
+    vertical-align: middle;
+    display: inline;
+    background-color: lightseagreen;
+    border: none;
+    font-family: inherit;
+    font-size: 12pt;
+    font-weight: normal;
+    color: black;
+    text-decoration: none;
+    margin: .5em;
+    margin-left: 0;
+}
+
+.delete {
+    margin: 0 0 0 0;
+}
+
+.button-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: rgb(30, 172, 165);
+    color: rgb(202, 202, 202);
+}
+
+.nav-button {
+    font-size: 18pt;
+}
+
+ul {
+    display: inline;
+}
+
+ul li {
+    padding-right: .5em;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+}
+
+.modal-content {
+    background-color: rgb(36, 36, 36);
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    border-radius: .1em;
+    max-width: 300px;
+    padding: 1em;
+    box-shadow: 0 0 1em .0002em rgb(18, 18, 18, 0.5);
+}
+
+.modal-content form textarea {
+    background-color: rgb(40, 40, 40);
+    color: rgba(255, 255, 255, 0.863);
+    border: none;
+    margin: 0 auto;
+    font-family: inherit;
+    font-size: 12pt;
+    width: 100%;
+    height: 5em;
+    resize: none;
+    box-shadow: 0 0 0 1px rgb(18, 18, 18, 0.5) inset;
+}
+
+.modal-content form label {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-top: 1em;
+    font-size: 12pt;
+}
+
+@media only screen and (max-width: 850px) {
+    body {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .nav-button {
+        font-size: 12pt;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    body {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .nav-button {
+        font-size: 12pt;
+    }
+	.post .media {
+		width: 300px;
+	}
+}
+
+input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+.file-upload {
+    max-width: 5em;
+    padding: .2em;
+}
+
+/* When the visually hidden child input has focus, style the parent. */
+
+.file-upload:focus-within {
+    outline: 5px solid;
+}

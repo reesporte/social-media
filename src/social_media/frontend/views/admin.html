@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>social media: admin page</title>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/img/gif/palm_tree.gif" type="image/gif" />
+        <link rel="apple-touch-icon-precomposed" href="/static/img/apple-touch-icon.png">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/profile.css">
+        <script src="/static/js/script.js"></script>
+        <script src="/static/js/admin.js"></script>
+    </head>
+    <body>
+        <div class="profile-container">
+            <h1>The Page of Administration</h1>
+            <span style="display: block; margin-bottom: 1em; margin-top: .5em;">
+                <button onclick="window.location.replace('/')" class="button-link">home</button>
+                <button class="button-link" onclick="toggleCollapsed('create-user-modal')">create user</button>
+                <button class="button-link" onclick="toggleCollapsed('delete-user-modal')">delete user</button>
+                <button class="button-link" onclick="toggleCollapsed('reset-user-pass-modal')">reset user password</button>
+            </span>
+        </div>
+
+        <div id="create-user-modal" class="flex-child" style="display: none; margin-top: 1em;">
+            <div>
+                <h2>create user:</h2>
+                <form id="create-user-form">
+                    <label for="username-create">username:</label>
+                    <input type="text" name="username-create" id="username-create">
+
+                    <label for="admin-create">admin:</label>
+                    <input type="checkbox" name="admin-create" id="admin-create">
+                </form>
+                <button class="button-link" onclick="createUser()">create user</button>
+                <button class="button-link" onclick="toggleCollapsed('create-user-modal')">cancel</button>
+            </div>
+        </div>
+
+        <div id="delete-user-modal" class="flex-child" style="display: none; margin-top: 1em;">
+            <div>
+                <h2>delete user:</h2>
+                <form id="delete-user-form">
+                    <label for="username-delete">username:</label>
+                    <input type="text" name="username-delete" id="username-delete">
+                </form>
+                <button class="button-link" onclick="deleteUser()">delete user</button>
+                <button class="button-link" onclick="toggleCollapsed('delete-user-modal')">cancel</button>
+            </div>
+        </div>
+
+        <div id="reset-user-pass-modal" class="flex-child" style="display: none; margin-top: 1em;">
+            <div>
+                <h2>reset user password:</h2>
+                <form id="reset-user-pass-form">
+                    <label for="username-reset">username:</label>
+                    <input type="text" name="username-reset" id="username-reset">
+                </form>
+                <button class="button-link" onclick="resetUserPassword()">create user</button>
+                <button class="button-link" onclick="toggleCollapsed('reset-user-pass-modal')">cancel</button>
+            </div>
+        </div>
+    </body>
+</html>
